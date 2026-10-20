@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inkwell – digital journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:wght@400;600&family=Lora:ital@0;1&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header>
+  <h1>Inkwell</h1>
+  <select id="theme" aria-label="Theme">
+    <option value="dusk">Lilac Dusk</option><option value="midnight">Midnight</option>
+    <option value="matcha">Matcha</option><option value="bubblegum">Bubblegum</option><option value="ocean">Ocean</option>
+  </select>
+  <button id="exp">Export backup</button>
+  <label class="btn">Import backup<input id="imp" type="file" accept="application/json" hidden></label>
+</header>
+
+<main id="lib">
+  <div class="row"><input id="q" type="search" placeholder="Search entries" aria-label="Search entries"><button id="new" class="on">New entry</button></div>
+  <div id="list"></div>
+</main>
+
+<main id="ed" hidden>
+  <div id="bar">
+    <div class="grp"><button id="back">Library</button>
+      <input id="title" placeholder="Title" aria-label="Title"><input id="date" type="date" aria-label="Date"><span id="st"></span></div>
+    <div class="grp">
+      <button data-t="select" class="on">Select</button><button data-t="text">Text</button>
+      <button data-t="draw">Draw</button><button data-t="erase">Eraser</button>
+      <button id="img">Photo</button><button id="stk">Sticker</button>
+      <select id="paper" aria-label="Paper"><option value="lined">Lined</option><option value="dotted">Dotted</option><option value="grid">Grid</option><option value="blank">Blank</option></select>
+      <input id="file" type="file" accept="image/*" multiple hidden>
+    </div>
+    <div id="pick" class="grp" hidden></div>
+    <div id="opt-text" class="grp" hidden>
+      <select id="font" aria-label="Font"><option>Caveat</option><option>Lora</option><option>Space Mono</option><option>DM Sans</option></select>
+      <input id="size" type="number" min="10" max="96" value="28" aria-label="Font size">
+      <input id="tcolor" type="color" value="#2b2640" aria-label="Text color">
+      <button id="b"><b>B</b></button><button id="i"><i>I</i></button>
+    </div>
+    <div id="opt-draw" class="grp" hidden>
+      <select id="brush" aria-label="Brush"><option value="pen">Pen</option><option value="marker">Marker</option><option value="hl">Highlighter</option></select>
+      <input id="dcolor" type="color" value="#6b4fd8" aria-label="Brush color">
+      <input id="dsize" type="range" min="1" max="12" value="3" aria-label="Brush size">
+      <button id="undo">Undo stroke</button><button id="redo">Redo</button><button id="clear">Clear drawing</button>
+    </div>
+    <div id="opt-sel" class="grp" hidden>
+      <button id="rl">Rotate left</button><button id="rr">Rotate right</button><button id="fr">Bring to front</button><button id="rm">Delete</button>
+    </div>
+  </div>
+  <div id="wrap"><div id="box"><div id="page" data-paper="lined"><canvas id="cv" width="720" height="960"></canvas><div id="els"></div></div></div></div>
+</main>
+<script src="app.js"></script>
+</body></html>
